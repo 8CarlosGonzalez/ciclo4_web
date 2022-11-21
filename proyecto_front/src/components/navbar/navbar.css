@@ -1,0 +1,13 @@
+#navbar #nav-dropdown-dark-example{
+    display: flex;
+}
+
+#navbar #dropdown-header .row:nth-child(1){
+    display: flex;
+    justify-content: auto;
+    padding-left: 8px;
+}
+
+#navbar #nav-dropdown-dark-example #img-user{
+    font-size: 120%;
+}

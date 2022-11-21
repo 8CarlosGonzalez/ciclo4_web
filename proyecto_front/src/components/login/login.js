@@ -1,6 +1,12 @@
 import React from "react";
+import axios from 'axios';
 import { Container, Form, Button, Row,Col } from "react-bootstrap";
-import './login.css'
+import './login.css';
+import {isNull} from 'util';
+import Cookies from 'universal-cookie';
+import {calculaExpiracionSesion} from '../helper/helper';
+const cookies = new Cookies();
+
 
 export default class login extends React.Component {
   constructor(props) {
@@ -10,12 +16,29 @@ export default class login extends React.Component {
         pass: ' ',
     };
   }
-  //creo metodo, capturo datos, con comilla invertida
-  iniciarSesion(){
-    //para ver que el metodo funciona
-    alert('Boton de iniciar sesion');
 
+  iniciarSesion(){
+    axios.post(`http://localhost:3001/usuarios/login`, {
+      usuario: this.state.usuario,
+      pass: this.state.pass,
+    })
+    .then((response) => {
+      if(isNull(response.data.token)){
+        alert('Usuario y/o contraseña incorrectos');
+      }else{
+        cookies.set('_s', response.data.token, {
+          path: '/',
+          expires: calculaExpiracionSesion(),
+        });
+        this.props.history.push(window.open('/empleados'));
+
+      }
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   }
+
   render() {
     return (
     <Container id="login-container" >
