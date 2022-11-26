@@ -9,8 +9,18 @@ export default function AppRouter(){
         return ( 
         <Router>
             <Switch>
-                <Route exact path={['/login']} component={Login}/>
-                <PrivateRoute exact path="/empleados" component={empleados}/>
+                <Route exact path={['/']} component={Login}/>
+                <Route exact path="/empleados" component={empleados}/>
+                <Route 
+                path ={'*'}
+                component = {() => (
+                    <h1 style ={{marginTop: 300}}>
+                        404
+                        <br />
+                        Pagina no encontrada
+                    </h1>
+                )}
+                />
             </Switch>
         </Router>);
 }

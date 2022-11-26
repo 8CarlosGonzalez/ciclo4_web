@@ -3,6 +3,7 @@ import { Navbar, Container,Nav, NavDropdown, Row, Dropdown} from "react-bootstra
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons'
 import './navbar.css';
+import logo from './logo.png';
 
 export default class menu extends React.Component {
   constructor(props) {
@@ -17,8 +18,8 @@ export default class menu extends React.Component {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="/logo.svg"
-              width="30"
+              src={logo}
+              width="80"
               height="30"
               className="d-inline-block align-top"
             />{" "}
@@ -26,9 +27,9 @@ export default class menu extends React.Component {
           </Navbar.Brand>
 
           <Nav className="me-auto">
-             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+             <Nav.Link href="#home">Login</Nav.Link>
+            <Nav.Link href="#features">Servicios</Nav.Link>
+            <Nav.Link href="#pricing">Otros</Nav.Link>
           </Nav>
 
           <Nav className='ms-auto'>
